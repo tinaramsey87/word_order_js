@@ -3,15 +3,13 @@ var occurance = function(wordStringArray) {
 
   wordStringArray.sort();
   wordStringArray.forEach(function(word, index) {
-      if ( wordStringArray[0] !== wordStringArray[1] ) {
+      if ( wordStringArray[index] !== wordStringArray[index + 1] ) {
         wordCounter.push(1);
-        // wordStringArray.splice(1);
       } else {
         wordCounter[wordCounter.length-1]++;
       }
   });
-  // for (var i = 0; i < wordStringArray.length(); i++) {
-  //   for (var j = i+1; j < wordStringArray.length(); j++) {
+
 
   return wordCounter;
 
@@ -20,17 +18,27 @@ var occurance = function(wordStringArray) {
 var wordOrder = function(wordString) {
   var uniqueWordsList = [];
   var wordStringArray = wordString.split(", ");
+  var sortedUniqueWordsList = [];
 
   var wordCounter = occurance(wordStringArray);
 
-  wordStringArray.forEach(function(word, index) {
-    if (uniqueWordsList.indexOf(word) === -1) {
-      uniqueWordsList.push(word)
-    }
-  });
+    wordStringArray.forEach(function(word, index) {
+      if (uniqueWordsList.indexOf(word) === -1) {
+        uniqueWordsList.push(word)
+      }
+    });
 
-  return uniqueWordsList;
+    uniqueWordsList.sort(function(a, b) {
+      return uniqueWordsList - wordCounter
+    });
+
+    uniqueWordsList.forEach(function(word, index) {
+      sortedUniqueWordsList.push(word)
+    });
+
+  return sortedUniqueWordsList;
 }
+
 
 
 

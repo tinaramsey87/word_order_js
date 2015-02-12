@@ -17,7 +17,7 @@ describe("wordOrder", function() {
 });
 
 describe("occurance", function() {
-  it("Keeps trak of how many times a word appears", function() {
+  it("Keeps track of how many times a word appears", function() {
     expect(occurance(["dog", "dog", "cat"])).to.eql([2, 1])
   });
 });
